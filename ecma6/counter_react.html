@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      let counter = 0;
+      const root = document.getElementById("root");
+      const p = React.createElement(
+        "p",
+        { id: "count", style: { color: "blue" } },
+        "this is a p tag",
+      );
+      const button = React.createElement(
+        "button",
+        {
+          onClick: () => {
+            counter++;
+            p.innerText = `${counter} 번 클릭했습니다.`;
+            console.log(counter, "button clicked");
+          },
+        },
+        "클릭하세요",
+      );
+      const app = React.createElement("div", null, [p, button]);
+      ReactDOM.render(app, root);
+    </script>
+  </body>
+</html>
