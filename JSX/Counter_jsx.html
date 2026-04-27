@@ -11,25 +11,29 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-        const root = document.getElementById("root");
-        let counter = 0;
-        function increaseCount() {
-          counter++;
-          render();
-        }
-        function render() {
-          console.log("렌더 함수가 호출되었습니다.");
-          ReactDOM.render(<App />, root);
-        }
-        const P = () => <p> {counter} 번 클릭했습니다.</p> ;
-        const Btn = ()=> <button onClick={increaseCount}>click</button>;
-        const App = () => (
+      const root = document.getElementById("root");
+      const App = () => {
+        const [counter, setCounter] = React.useState(0);
+        const [money, setMoney] = React.useState(0);
+        const onClick = () => {
+          setCounter(counter + 1);
+        };
+        const onClick2 = () => {
+          setMoney(money + 10);
+        };
+        console.log("state 가 변경되어 render 함수가 호출됨");
+        console.log(`counter => ${counter}`);
+        return (
           <>
-            <P/>
-            <Btn/>
+            <p> {counter} 번 클릭했습니다.</p>
+            <p> {money} 원으로 증가했습니다.</p>
+            <button onClick={onClick}>click하면 1씩 증가합니다.</button>     
+            <button onClick={onClick2}>click하면 10원씩 증가합니다.</button>
           </>
-        )
-        render();
+        );
+      };
+      console.log("렌더 함수가 호출됩니다.");
+      ReactDOM.render(<App />, root);
     </script>
   </body>
 </html>
