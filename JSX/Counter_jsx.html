@@ -17,12 +17,15 @@
         const [money, setMoney] = React.useState(0);
         const onClick = () => {
           setCounter(counter + 1);
+          console.log("counter state 가 변경되어 render 함수가 호출됨");
+          console.log(`counter => ${counter}, money => ${money}`);
         };
         const onClick2 = () => {
           setMoney(money + 10);
+          console.log("money state 가 변경되어 render 함수가 호출됨");
+          console.log(`counter => ${counter}, money => ${money}`);
         };
-        console.log("state 가 변경되어 render 함수가 호출됨");
-        console.log(`counter => ${counter}`);
+
         return (
           <>
             <p> {counter} 번 클릭했습니다.</p>
